@@ -30,7 +30,12 @@ public class GameController : MonoBehaviour {
 	public Player playerO;
 	public PlayerColor activePlayerColor;
 	public PlayerColor inactivePlayerColor;
-	private string playerSide;
+
+	private string playerSide;/// for AI
+	private string computerSide;/// for AI
+	public bool playerMove;/// for AI
+	public float delay;/// for AI
+	private int value;/// for AI
 
 		void Awake()
 		{
@@ -38,6 +43,22 @@ public class GameController : MonoBehaviour {
 			gameOverPanel.SetActive(false);
 			moveCount = 0;
 			restartButton.SetActive(false);
+			playerMove = true;/// for AI
+		}
+
+		void Update()/// for AI
+		{
+			if (playerMove == false) {
+				delay += delay * Time.deltaTime;
+				if (delay >= 100) {
+					value = Random.Range(0, 8);
+					if (buttonList[value].GetComponentInParent<Button>().interactable == true) {
+						buttonList[value].text = GetComputerSide();
+						buttonList[value].GetComponentInParent<Button>().interactable = false;
+						EndTurn();
+					}
+				}
+			}
 		}
 
 		void SetGameControllerReferenceOnButtons(){
@@ -50,10 +71,12 @@ public class GameController : MonoBehaviour {
 		public void SetStartingSide(string startingSide){
 			playerSide = startingSide;
 			if (playerSide == "X") {
+				computerSide = "O"; /// for AI
 				SetPlayersColors(playerX, playerO);
 			}
 			else
 			{
+				computerSide = "X";/// for AI
 				SetPlayersColors(playerO, playerX);
 			}
 			StartGame();
@@ -68,6 +91,10 @@ public class GameController : MonoBehaviour {
 
 		public string GetPlayerSide(){
 			return playerSide;
+		}
+
+		public string GetComputerSide(){/// for AI
+			return computerSide;
 		}
 
 		public void EndTurn(){
@@ -96,6 +123,32 @@ public class GameController : MonoBehaviour {
 			else if (buttonList[2].text == playerSide && buttonList[4].text == playerSide && buttonList[6].text == playerSide) {
 					Gameover(playerSide);
 			}
+			/// for AI next 8 if/ else if
+			else if (buttonList[0].text == computerSide && buttonList[1].text == computerSide && buttonList[2].text == computerSide) {
+					Gameover(computerSide);
+			}
+			else if (buttonList[3].text == computerSide && buttonList[4].text == computerSide && buttonList[5].text == computerSide) {
+					Gameover(computerSide);
+			}
+			else if (buttonList[6].text == computerSide && buttonList[7].text == computerSide && buttonList[8].text == computerSide) {
+					Gameover(computerSide);
+			}
+			else if (buttonList[0].text == computerSide && buttonList[3].text == computerSide && buttonList[6].text == computerSide) {
+					Gameover(computerSide);
+			}
+			else if (buttonList[1].text == computerSide && buttonList[4].text == computerSide && buttonList[7].text == computerSide) {
+					Gameover(computerSide);
+			}
+			else if (buttonList[2].text == computerSide && buttonList[5].text == computerSide && buttonList[8].text == computerSide) {
+					Gameover(computerSide);
+			}
+			else if (buttonList[0].text == computerSide && buttonList[4].text == computerSide && buttonList[8].text == computerSide) {
+					Gameover(computerSide);
+			}
+			else if (buttonList[2].text == computerSide && buttonList[4].text == computerSide && buttonList[6].text == computerSide) {
+					Gameover(computerSide);
+			}
+
 			else if (moveCount >= 9) {
 				if (gameends_flag != 1) {
 						Gameover("draw");
@@ -103,6 +156,7 @@ public class GameController : MonoBehaviour {
 			}
 			else{
 					ChangeSides();
+					delay = 10;/// for AI
 			}
 
 		}
@@ -115,9 +169,6 @@ public class GameController : MonoBehaviour {
 
 		}
 
-		void CheckGameOver(){
-
-		}
 
 		void Gameover(string winningPlayer){
 			SetBoardInteractable(false);
@@ -135,8 +186,10 @@ public class GameController : MonoBehaviour {
 		}
 
 		void ChangeSides(){
-			playerSide = (playerSide == "X") ? "O" : "X";
-			if (playerSide == "X") {
+			playerMove = (playerMove == true) ? false : true;/// for AI
+			//playerSide = (playerSide == "X") ? "O" : "X";
+			if (playerMove == true){ /// for AI
+			//if (playerSide == "X") {
 				SetPlayersColors(playerX, playerO);
 			}
 			else{
@@ -162,6 +215,8 @@ public class GameController : MonoBehaviour {
 			SetPlayerButtons(true);
 			SetPlayersColorInactive();
 			startInfo.SetActive(true);
+			playerMove = true;///for AI
+			delay = 10;///for AI
 		}
 
 		void SetBoardInteractable(bool toggle){
