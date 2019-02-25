@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System;
 //////////////////////////////
 
 ///// classes for minmax AI
 public class MNode {
 	public int x;
-	//public int y;
-	//public int player;
-	public string player;// this is our player
+	public int y;
+	public int player;
+	//public string player;// this is our player
 
 }
 public class MovesAndScores {
@@ -62,6 +64,12 @@ public class GameController : MonoBehaviour {
 	private int[] last_moves  = new int[9];
 
 
+	//MNode[] grid = new MNode[9];
+	MNode[,] grid = new MNode[3,3];
+	public List<MovesAndScores> rootsChildrenScores;
+	//public GameObject ui;
+
+
 		void Awake()
 		{
 			SetGameControllerReferenceOnButtons();
@@ -78,47 +86,26 @@ public class GameController : MonoBehaviour {
 		void Update () { /// for minmax AI
 			if (!isGameOver()) {
 	      if (playerMove == false) {
-	        delay += delay * Time.deltaTime;
-	        if (delay >= 100) {
-						Debug.Log("min max successfully called");
-	          callMinimax (0, true);// first parameter depth second is turn
-
-	  				MNode best = returnBestMove ();
-	  				//if(isValidMove(best.x, best.y)){
-						if(isValidMove(best.x)){// check if that is valid move in buttonList
-	            if (buttonList[best.x].GetComponentInParent<Button>().interactable == true) {
-	            	buttonList[best.x].text = GetComputerSide();
-								buttonList[best.x].GetComponentInParent<Button>().interactable = false;
-	  						//best.player = 2;
-	            	best.player = computerSide;
-	  						//grid[best.x,best.y] = best;
-	            	grid[best.x] = best;
-								EndTurn();
-	          	}
-					  }
-
-
-	        }
+					Debug.Log("min max successfully called");
+          callMinimax (0, 1);// first parameter depth second is turn
+  				MNode best = returnBestMove ();
+					if(isValidMove(best.x, best.y)){
+						int valToPutInButtonListIndex = MultiToSingle(best.x, best.y);
+						Debug.Log("Value where button list to update " + valToPutInButtonListIndex);
+						if (buttonList[valToPutInButtonListIndex].GetComponentInParent<Button>().interactable == true){
+							best.player = 2;
+							Debug.Log("best X is " + best.x + " best Y is " + best.y);
+							grid[best.x,best.y] = best;
+							buttonList[valToPutInButtonListIndex].text = GetComputerSide();
+							buttonList[valToPutInButtonListIndex].GetComponentInParent<Button>().interactable = false;
+							int garbage_values = 0;
+							garbage_values = CheckLastMoveWas();
+							EndTurn();
+						}
+					}
 	      }
-
 	    }
 		}
-
-		// void Update()/// for AI (random clicker)
-		// {
-		// 	if (playerMove == false) {
-		// 		delay += delay * Time.deltaTime;
-		// 		if (delay >= 100) {
-		// 			value = Random.Range(0, 8);
-		// 			if (buttonList[value].GetComponentInParent<Button>().interactable == true) {
-		// 				buttonList[value].text = GetComputerSide();
-		// 				buttonList[value].GetComponentInParent<Button>().interactable = false;
-		// 				EndTurn();
-		// 			}
-		// 		}
-		// 	}
-		// }
-
 
 ///// update functions ends
 
@@ -127,35 +114,60 @@ public class GameController : MonoBehaviour {
 int SingleToMulti(int val)
 {
 	int x = 0, y = 0;
-	if (val>=6) {
-		x = val- 6;
-		y = val%3;
+	if (val == 0) {
+		x=0;
+		y=0;
 	}
-	else if (val<6 && val >=3) {
-		x = val- 3;
-		y = val%3;
+	else if (val == 1) {
+		x=0;
+		y=1;
 	}
-	else if (val<3 && val >=0) {
-		x = val;
-		y = 0;
+	else if (val == 2) {
+		x=0;
+		y=2;
+	}
+	else if (val == 3) {
+		x=1;
+		y=0;
+	}
+	else if (val == 4) {
+		x=1;
+		y=1;
+	}
+	else if (val == 5) {
+		x=1;
+		y=2;
+	}
+	else if (val == 6) {
+		x=2;
+		y=0;
+	}
+	else if (val == 7) {
+		x=2;
+		y=1;
+	}
+	else if (val == 8) {
+		x=2;
+		y=2;
 	}
 	return x*10 + y;// where this function is called after that add line ret_value_x = ret_value/10 and ret_value_y = ret_value%10
 }
 
 int MultiToSingle(int x, int y){
-	if(y == 0)
-		return x;
-	else if (y == 1)
-		return 3 + x;
-	else if (y == 2)
-		return 6 + x;
+	// X is 1 Y is 0 value out was 1
+	if(x == 0)
+		return y;
+	else if (x == 1)
+		return 3 + y;
+	else if (x == 2)
+		return 6 + y;
 	else
 		return 0;
 }
 
 ////// some AI funcions ends
 
-		private int CheckLastMoveWas()
+		int CheckLastMoveWas()
 		{
 				int movesLastWas = 0;
 				for (int i=0; i<9; i++) {
@@ -171,7 +183,6 @@ int MultiToSingle(int x, int y){
 
 		void SetGameControllerReferenceOnButtons(){
 			for (int i = 0; i < buttonList.Length; i++) {
-
 					buttonList[i].GetComponentInParent<GridSpace>().SetGameControllerReference(this);
 			}
 		}
@@ -324,7 +335,13 @@ int MultiToSingle(int x, int y){
 			SetPlayersColorInactive();
 			startInfo.SetActive(true);
 			playerMove = true;///for AI
-			delay = 10;///for AI
+			delay = 30;///for AI
+			for (int i = 0 ; i< 3; i++) {
+				for (int j = 0 ; j< 3; j++) {
+					grid[i, j] = null;
+				}
+			}
+
 		}
 
 		void SetBoardInteractable(bool toggle){
@@ -348,133 +365,64 @@ int MultiToSingle(int x, int y){
 
 		/// for minmax algo AI following computerSide
 
-
-		MNode[] grid = new MNode[9];
-		public List<MovesAndScores> rootsChildrenScores;
-		//public GameObject ui;
-
-
 	  // set this function as on click for every Grid Space
 	  public void PlayerTurnUpdate(){/// my function to get the player moves updated
 	    MNode node = new MNode ();
 			lastmove = CheckLastMoveWas();
-			node.x = lastmove;//logic = get last move and pass as node.x
-	    node.player = playerSide;
-	    grid [node.x] = node; //insert this MNode into the grid
+			int last_move_converter;
+			last_move_converter = SingleToMulti(lastmove);
+			node.x = last_move_converter/10;//logic = get last move and pass as node.x
+			node.y = last_move_converter%10;
+	    node.player = 1;
+	    grid[node.x, node.y] = node; //insert this MNode into the grid
 	  }
 
-		public bool hasOWon(){// computer has won
+		public bool hasOWon(){
 			//check to see if the positions you're about to check actually exist in the grid
-			// if (grid [0, 0] != null && grid [1, 1] != null && grid [2, 2] != null) {
-			// 	//check to see if there is a diagonal win for the O player
-			// 	if (grid [0, 0].player == grid [1, 1].player && grid [0, 0].player == grid [2, 2].player && grid [0, 0].player == 1)
-			// 		return true;
-			// }
-			// if (grid [0, 2] != null && grid [1, 1] != null && grid [2, 0] != null) {
-			// 	//diagonal win
-			// 	if(grid [0, 2].player == grid [1, 1].player && grid [0, 2].player == grid [2, 0].player && grid [0, 2].player == 1)
-			// 		return true;
-			// }
-			// //Column Wins
-			// for (int i = 0; i < 3; ++i) {
-			// 	if(grid[i,0] != null && grid[i,1] != null && grid[i,2] != null) {
-			// 		if(grid[i,0].player == grid[i,1].player && grid[i,0].player == grid[i,2].player && grid[i,0].player == 1)
-			// 			return true;
-			// 	}
-			// 	if(grid[0,i] != null && grid[1,i] != null && grid[2,i] != null) {
-			// 		if(grid[0,i].player == grid[1,i].player && grid[0,i].player == grid[2,i].player && grid[0,i].player == 1)
-			// 			return true;
-			// 	}
-			// }
-			if (grid [0] != null && grid [1] != null && grid [2] != null)
-	    if (grid[0].player == computerSide && grid[1].player == computerSide && grid[2].player == computerSide) {
-	        return true;
-	    }
-			else if (grid [3] != null && grid [4] != null && grid [5] != null)
-	    if (grid[3].player == computerSide && grid[4].player == computerSide && grid[5].player == computerSide) {
-	        return true;
-	    }
-			else if (grid [6] != null && grid [7] != null && grid [8] != null)
-	    if (grid[6].player == computerSide && grid[7].player == computerSide && grid[8].player == computerSide) {
-	        return true;
-	    }
-			else if (grid [0] != null && grid [3] != null && grid [6] != null)
-	    if (grid[0].player == computerSide && grid[3].player == computerSide && grid[6].player == computerSide) {
-	        return true;
-	    }
-			else if (grid [1] != null && grid [4] != null && grid [7] != null)
-	    if (grid[1].player == computerSide && grid[4].player == computerSide && grid[7].player == computerSide) {
-	        return true;
-	    }
-			else if (grid [2] != null && grid [5] != null && grid [8] != null)
-	    if (grid[2].player == computerSide && grid[5].player == computerSide && grid[8].player == computerSide) {
-	        return true;
-	    }
-			else if (grid [0] != null && grid [4] != null && grid [8] != null)
-	    if (grid[0].player == computerSide && grid[4].player == computerSide && grid[8].player == computerSide) {
-	        return true;
-	    }
-			else if (grid [2] != null && grid [4] != null && grid [6] != null)
-	    if (grid[2].player == computerSide && grid[4].player == computerSide && grid[6].player == computerSide) {
-	        return true;
-	    }
-
+			if (grid [0, 0] != null && grid [1, 1] != null && grid [2, 2] != null) {
+				//check to see if there is a diagonal win for the O player
+				if (grid [0, 0].player == grid [1, 1].player && grid [0, 0].player == grid [2, 2].player && grid [0, 0].player == 1)
+					return true;
+			}
+			if (grid [0, 2] != null && grid [1, 1] != null && grid [2, 0] != null) {
+				//diagonal win
+				if(grid [0, 2].player == grid [1, 1].player && grid [0, 2].player == grid [2, 0].player && grid [0, 2].player == 1)
+					return true;
+			}
+			//Column Wins
+			for (int i = 0; i < 3; ++i) {
+				if(grid[i,0] != null && grid[i,1] != null && grid[i,2] != null) {
+					if(grid[i,0].player == grid[i,1].player && grid[i,0].player == grid[i,2].player && grid[i,0].player == 1)
+						return true;
+				}
+				if(grid[0,i] != null && grid[1,i] != null && grid[2,i] != null) {
+					if(grid[0,i].player == grid[1,i].player && grid[0,i].player == grid[2,i].player && grid[0,i].player == 1)
+						return true;
+				}
+			}
 			return false; //there are no winning solutions on the board for O
 		}
 
-		public bool hasXWon() {// player has won
-			// if (grid [0, 0] != null && grid [1, 1] != null && grid [2, 2] != null) {
-			// 	if (grid [0, 0].player == grid [1, 1].player && grid [0, 0].player == grid [2, 2].player && grid [0, 0].player == 2)
-			// 		return true;
-			// }
-			// if (grid [0, 2] != null && grid [1, 1] != null && grid [2, 0] != null) {
-			// 	if(grid [0, 2].player == grid [1, 1].player && grid [0, 2].player == grid [2, 0].player && grid [0, 2].player == 2)
-			// 		return true;
-			// }
-	    //
-			// for (int i = 0; i < 3; ++i) {
-			// 	if(grid[i,0] != null && grid[i,1] != null && grid[i,2] != null) {
-			// 		if(grid[i,0].player == grid[i,1].player && grid[i,0].player == grid[i,2].player && grid[i,0].player == 2)
-			// 			return true;
-			// 	}
-			// 	if(grid[0,i] != null && grid[1,i] != null && grid[2,i] != null) {
-			// 		if(grid[0,i].player == grid[1,i].player && grid[0,i].player == grid[2,i].player && grid[0,i].player == 2)
-			// 			return true;
-			// 	}
-			// }
-			if (grid [0] != null && grid [1] != null && grid [2] != null)
-	    if (grid[0].player == playerSide && grid[1].player == playerSide && grid[2].player == playerSide) {
-	        return true;
-	    }
-			else if (grid [3] != null && grid [4] != null && grid [5] != null)
-	    if (grid[3].player == playerSide && grid[4].player == playerSide && grid[5].player == playerSide) {
-	        return true;
-	    }
-			else if (grid [6] != null && grid [7] != null && grid [8] != null)
-	    if (grid[6].player == playerSide && grid[7].player == playerSide && grid[8].player == playerSide) {
-	        return true;
-	    }
-			else if (grid [0] != null && grid [3] != null && grid [6] != null)
-	    if (grid[0].player == playerSide && grid[3].player == playerSide && grid[6].player == playerSide) {
-	        return true;
-	    }
-			else if (grid [1] != null && grid [4] != null && grid [7] != null)
-	    if (grid[1].player == playerSide && grid[4].player == playerSide && grid[7].player == playerSide) {
-	        return true;
-	    }
-			else if (grid [2] != null && grid [5] != null && grid [8] != null)
-	    if (grid[2].player == playerSide && grid[5].player == playerSide && grid[8].player == playerSide) {
-	        return true;
-	    }
-			else if (grid [0] != null && grid [4] != null && grid [8] != null)
-	    if (grid[0].player == playerSide && grid[4].player == playerSide && grid[8].player == playerSide) {
-	        return true;
-	    }
-			else if (grid [2] != null && grid [4] != null && grid [6] != null)
-	    if (grid[2].player == playerSide && grid[4].player == playerSide && grid[6].player == playerSide) {
-	        return true;
-	    }
+		public bool hasXWon() {
+			if (grid [0, 0] != null && grid [1, 1] != null && grid [2, 2] != null) {
+				if (grid [0, 0].player == grid [1, 1].player && grid [0, 0].player == grid [2, 2].player && grid [0, 0].player == 2)
+					return true;
+			}
+			if (grid [0, 2] != null && grid [1, 1] != null && grid [2, 0] != null) {
+				if(grid [0, 2].player == grid [1, 1].player && grid [0, 2].player == grid [2, 0].player && grid [0, 2].player == 2)
+					return true;
+			}
 
+			for (int i = 0; i < 3; ++i) {
+				if(grid[i,0] != null && grid[i,1] != null && grid[i,2] != null) {
+					if(grid[i,0].player == grid[i,1].player && grid[i,0].player == grid[i,2].player && grid[i,0].player == 2)
+						return true;
+				}
+				if(grid[0,i] != null && grid[1,i] != null && grid[2,i] != null) {
+					if(grid[0,i].player == grid[1,i].player && grid[0,i].player == grid[2,i].player && grid[0,i].player == 2)
+						return true;
+				}
+			}
 			return false; //there are no winning solutions on the board for X
 		}
 
@@ -482,13 +430,10 @@ int MultiToSingle(int x, int y){
 		public bool isGameOver() {
 			//Text text = ui.GetComponent<Text>();
 
-			// if (getMoves ().Capacity == 0) {
-			// 	//text.text = "It's a draw!";
-			// 	return true;
-			// }
-	    if (moveCount >= 9) {
-	      return true;
-	    }
+			if (getMoves ().Capacity == 0) {
+				//text.text = "It's a draw!";
+				return true;
+			}
 			if (hasOWon ()) {
 				//text.text = "You Won!";
 				return true;
@@ -503,12 +448,14 @@ int MultiToSingle(int x, int y){
 		//returns a list of MNodes, each MNode being a position that is empty and available
 		List<MNode> getMoves() {
 			List<MNode> result = new List<MNode>();
-			for(int row = 0; row < 9; row++) {
-					//if(grid[row] == null) {
-	        if (grid[row] == null){
+			for(int row = 0; row < 3; row++) {
+				for(int col = 0; col < 3; col++) {
+					if(grid[row,col] == null) {
 						MNode newNode = new MNode();
 						newNode.x = row;
+						newNode.y = col;
 						result.Add(newNode); //if the space is empty, add it to the list of results
+					}
 				}
 			}
 			return result;
@@ -522,62 +469,23 @@ int MultiToSingle(int x, int y){
 			//iterates through rootsChildrenScores to get the best move
 			for (int i = 0; i < rootsChildrenScores.Count; i++) {
 				//also makes sure that the position in the grid is not occupied
-				if (MAX < rootsChildrenScores[i].score && isValidMove(rootsChildrenScores[i].point.x)) {
+				if (MAX < rootsChildrenScores[i].score && isValidMove(rootsChildrenScores[i].point.x, rootsChildrenScores[i].point.y)) {
 					MAX = rootsChildrenScores[i].score;
 					best = i;
 				}
 			}
-			if(best > -1){
+			if(best > -1)
 				return rootsChildrenScores[best].point;
-			}
 			MNode blank = new MNode();
-			blank.x = 0;// create logic here to return something useful
+			blank.x = 0;
+			blank.y = 0;
 			return blank;
 		}
 
-		// public MNode returnBestMove() {
-		// 	int MAX = -100000;
-		// 	int best = -1;
-		// 	int second_best = -20;
-		//
-		// 	//iterates through rootsChildrenScores to get the best move
-		// 	for (int i = 0; i < rootsChildrenScores.Count; i++) {
-		// 		//also makes sure that the position in the grid is not occupied
-		// 		if (MAX < rootsChildrenScores[i].score && isValidMove(rootsChildrenScores[i].point.x)) {
-		// 			MAX = rootsChildrenScores[i].score;
-		// 			best = i;
-		// 		}
-		// 		if (second_best<rootsChildrenScores[i].score && isValidMove(rootsChildrenScores[i].point.x) && best>rootsChildrenScores[i].score) {
-		// 			second_best = i;
-		// 		}
-		// 	}
-		// 	if(best > -1){
-		// 		//MNode[] grid = new MNode[9];
-		// 		MNode best_x  = new MNode();
-		// 		MNode best_y  = new MNode();
-		// 		int best_moves = new int[2];
-		// 		best_x = rootsChildrenScores[best].point;
-		// 		best_moves[0] = best_x.x;
-		// 		best_y = rootsChildrenScores[second_best].point;
-		// 		best_moves[1] = best_y.x;
-		// 		//return rootsChildrenScores[best].point;
-		// 		return best_moves;
-		// 	}
-		// 	MNode blank = new MNode();
-		// 	blank.x = 0;// create logic here to return something useful
-		// 	int best_moves_2  = new int[2];
-		// 	best_moves_2[0] = blank.x;
-		// 	best_moves_2[1] = blank.x;
-		// 	//return blank, blank;
-		// 	return best_moves;
-		// }
-
 		//returns true if the location is not currently occupied, returns false otherwise
-		public bool isValidMove(int x) {
-			//if (grid [x, y] == null)
-	    if (grid[x] == null) {
-	        return true;
-	    }
+		public bool isValidMove(int x, int y) {
+			if (grid [x, y] == null)
+				return true;
 			return false;
 		}
 
@@ -608,15 +516,15 @@ int MultiToSingle(int x, int y){
 		}
 
 		//calls the minimax function with a given depth and turn
-		public void callMinimax(int depth, bool turn){
+		public void callMinimax(int depth, int turn){
 			rootsChildrenScores = new List<MovesAndScores>();
 			minimax(depth, turn);
 		}
 
-		public int minimax(int depth, bool turn) {
-			//Debug.Log("Inside minmax");
-			if (hasXWon()) return +10; //+1 for a player win
-			if (hasOWon()) return -10; //-1 for a computer win
+		public int minimax(int depth, int turn) {
+
+			if (hasXWon()) return +1; //+1 for a player win
+			if (hasOWon()) return -1; //-1 for a computer win
 
 			List<MNode> pointsAvailable = getMoves();
 			if (pointsAvailable.Capacity == 0) return 0;
@@ -627,13 +535,14 @@ int MultiToSingle(int x, int y){
 				MNode point = pointsAvailable[i];
 
 				//Select the highest from the minimax call on X's turn
-				if (turn == true) {// turn == 1
+				if (turn == 1) {
 					MNode x = new MNode();
 					x.x = point.x;
-					x.player = computerSide; // x.player = 2
-					grid[point.x] = x;
+					x.y = point.y;
+					x.player = 2;
+					grid[point.x,point.y] = x;
 
-					int currentScore = minimax(depth + 1, false);
+					int currentScore = minimax(depth + 1, 2);
 					scores.Add(currentScore);
 
 					if (depth == 0) {
@@ -645,22 +554,17 @@ int MultiToSingle(int x, int y){
 
 				}
 				//Select the lowest from the minimax call on O's turn
-				//else if (turn == 2) {
-	      else if (turn == false){
+				else if (turn == 2) {
 					MNode o = new MNode();
 					o.x = point.x;
-					//o.y = point.y;
-					//o.player = 1;
-	        o.player = playerSide;
-					grid[point.x] = o;
-					int currentScore = minimax(depth+1,true);
+					o.y = point.y;
+					o.player = 1;
+					grid[point.x,point.y] = o;
+					int currentScore = minimax(depth+1,1);
 					scores.Add(currentScore);
 				}
-				//grid[point.x, point.y] = null; //reset the point
-	      grid[point.x] = null;
+				grid[point.x, point.y] = null; //reset the point
 			}
-			//return turn == 1 ? returnMax(scores) : returnMin(scores);
-	    return turn == true ? returnMax(scores) : returnMin(scores);
+			return turn == 1 ? returnMax(scores) : returnMin(scores);
 		}
-
 }

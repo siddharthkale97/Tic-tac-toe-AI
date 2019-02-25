@@ -233,6 +233,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 81353456}
     m_Modifications:
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224676593399155258, guid: 40514603e7983e6428476a68b23ee48b,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -346,6 +351,31 @@ Prefab:
         type: 2}
       propertyPath: m_Interactable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1349590575}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayerTurnUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40514603e7983e6428476a68b23ee48b, type: 2}
@@ -518,6 +548,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 81353456}
     m_Modifications:
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224676593399155258, guid: 40514603e7983e6428476a68b23ee48b,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -612,6 +647,31 @@ Prefab:
         type: 2}
       propertyPath: m_Interactable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1349590575}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayerTurnUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40514603e7983e6428476a68b23ee48b, type: 2}
@@ -1069,6 +1129,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 81353456}
     m_Modifications:
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224676593399155258, guid: 40514603e7983e6428476a68b23ee48b,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1182,6 +1247,31 @@ Prefab:
         type: 2}
       propertyPath: m_Interactable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1349590575}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayerTurnUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40514603e7983e6428476a68b23ee48b, type: 2}
@@ -1326,6 +1416,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 81353456}
     m_Modifications:
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224676593399155258, guid: 40514603e7983e6428476a68b23ee48b,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1440,6 +1535,31 @@ Prefab:
       propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1349590575}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayerTurnUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40514603e7983e6428476a68b23ee48b, type: 2}
   m_IsPrefabAsset: 0
@@ -1468,6 +1588,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 81353456}
     m_Modifications:
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224676593399155258, guid: 40514603e7983e6428476a68b23ee48b,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1582,6 +1707,31 @@ Prefab:
       propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1349590575}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayerTurnUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40514603e7983e6428476a68b23ee48b, type: 2}
   m_IsPrefabAsset: 0
@@ -1592,6 +1742,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 81353456}
     m_Modifications:
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224676593399155258, guid: 40514603e7983e6428476a68b23ee48b,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1705,6 +1860,31 @@ Prefab:
         type: 2}
       propertyPath: m_Interactable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1349590575}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayerTurnUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40514603e7983e6428476a68b23ee48b, type: 2}
@@ -1872,6 +2052,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 81353456}
     m_Modifications:
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224676593399155258, guid: 40514603e7983e6428476a68b23ee48b,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1985,6 +2170,31 @@ Prefab:
         type: 2}
       propertyPath: m_Interactable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1349590575}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayerTurnUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40514603e7983e6428476a68b23ee48b, type: 2}
@@ -2311,6 +2521,7 @@ MonoBehaviour:
     textColor: {r: 0, g: 0.8, b: 0.8, a: 1}
   playerMove: 0
   delay: 10
+  lastmove: 0
 --- !u!4 &1349590576
 Transform:
   m_ObjectHideFlags: 0
@@ -2331,6 +2542,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 81353456}
     m_Modifications:
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224676593399155258, guid: 40514603e7983e6428476a68b23ee48b,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -2444,6 +2660,31 @@ Prefab:
         type: 2}
       propertyPath: m_Interactable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1349590575}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayerTurnUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40514603e7983e6428476a68b23ee48b, type: 2}
@@ -2605,6 +2846,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 81353456}
     m_Modifications:
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224676593399155258, guid: 40514603e7983e6428476a68b23ee48b,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -2718,6 +2964,31 @@ Prefab:
         type: 2}
       propertyPath: m_Interactable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1349590575}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayerTurnUpdate
+      objectReference: {fileID: 0}
+    - target: {fileID: 114503856830636062, guid: 40514603e7983e6428476a68b23ee48b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40514603e7983e6428476a68b23ee48b, type: 2}
