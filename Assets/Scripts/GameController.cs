@@ -297,7 +297,7 @@ int MultiToSingle(int x, int y){
 					SetPlayersColorInactive();
 			}
 			else{
-					SetGameOverText(playerSide + " wins!");
+					SetGameOverText(winningPlayer + " wins!");
 			}
 
 			restartButton.SetActive(true);
